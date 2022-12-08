@@ -1,17 +1,39 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>html 실습</title>
-    <link rel="stylesheet" href="css/example.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>html 실습</title>
+  <link rel="stylesheet" href="css/example.css">
 </head>
 <body>
-    <h1 class="inline">홍길동</h1>님 반갑습니다.
+  <h1 class="inline">홍길동</h1>님 반갑습니다.
+  <div>
+    현재 접속자는 <span class="red">홍길동</span>님 입니다.
     <div>
-        현재 접속자는 <span class="red">홍길동</span>님 입니다.
+      <span class="studentNo">학번</span>, <span class="email">이메일</span>
     </div>
-    <script src="js/example.js"></script>
+  </div>
+  <dialog id="inputModal">
+    <div class="modalContent">
+      <form class="modalForm">
+        <label>
+          이름 :
+          <input name="userName" type="text"/>
+        </label>
+        <label>
+          학번 :
+          <input name="studentNo" type="text"/>
+        </label>
+        <label>
+          이메일 :
+          <input name="email" type="text"/>
+        </label>
+      </form>
+      <button class="modalSubmit">확인</button>
+    </div>
+  </dialog>
+  <script src="js/example.js"></script>
 </body>
 </html>
