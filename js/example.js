@@ -10,14 +10,18 @@ const emailCheck = new RegExp('[a-z0-9]+@[a-z]+\\.[a-z]{2,3}');
 const setUserName = (name) => {
   nameH1Element.textContent = name;
   connectNameElement.textContent = name;
+  localStorage.setItem('userName', name);
+  localStorage.setItem('name', name);
 };
 
 const setStudentNo = (studentNo) => {
   studentNoElement.textContent = studentNo;
+  localStorage.setItem('studentNo', studentNo);
 };
 
 const setEmail = (email) => {
   emailElement.textContent = email;
+  localStorage.setItem('email', email);
 };
 
 const localName = localStorage.getItem('userName');
@@ -40,15 +44,18 @@ modalSubmitBtn.onclick = () => {
   const formData = new FormData(modalFormElement);
 
   for (const [key, value] of formData) {
-    localStorage.setItem(key, value);
     // console.log.(`${key} : ${value}`);
     if (key==='userName') setUserName(value);
-    else if (key==='studentNo' && isNaN(parseInt(value)) === false) {
+    else if (key==='studentNo' && value.length === 9) {
       setStudentNo(value);
     } else if (key==='email' && emailCheck.test(value)) {
       setEmail(value);
     } else {
-      alert('제대로 입력하셈');
+      if (key==='studentNo' && value.length !== 9) {
+        alert('학번은 9자리 입력해주세요.');
+      } else if (key==='email' && emailCheck.test(value) === false) {
+        alert('이메일을 제대로 입력해주세요.');
+      }
     }
 
     inputModalElement.close();
